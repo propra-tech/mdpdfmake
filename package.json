@@ -35,8 +35,6 @@
     "typescript": "^5.2.2"
   },
   "dependencies": {
-    "axios": "^1.5.1",
-    "image-to-base64": "^2.2.0",
     "marked": "^9.1.2",
     "pdfmake": "^0.2.8"
   },

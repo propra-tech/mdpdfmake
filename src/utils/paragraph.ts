@@ -1,5 +1,4 @@
 import { Tokens } from "Tokens";
-import { pdfMakeImage } from "./image";
 import { pdfMakeText } from "./text";
 import { pdfMakeCodeblock } from "./codeblock";
 
@@ -13,21 +12,6 @@ export const pdfMakeParagraph = async (
 
     for (const childToken of token.tokens) {
       switch (childToken.type) {
-        case "image": {
-          // If there are inline elements before the image, push them as a paragraph
-          if (inlineElements.length > 0) {
-            content.push({
-              text: inlineElements,
-              margin: [0, 5, 0, 5],
-            });
-            inlineElements = []; // Reset inline elements
-          }
-
-          // Process and push the image as a separate block
-          const imageFragment = await pdfMakeImage(childToken, [], false);
-          content.push(imageFragment);
-          break;
-        }
         case "strong":
         case "em":
         case "codespan":
