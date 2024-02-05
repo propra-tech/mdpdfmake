@@ -1,12 +1,12 @@
 {
-  "name": "mdpdfmake",
+  "name": "@propra/mdpdfmake",
   "version": "1.0.8",
   "description": "A Node.js library to convert Markdown to PDFMake Syntax",
   "main": "dist/index.js",
   "types": "src/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hackerbone/mdpdfmake.git"
+    "url": "git+https://github.com/propra-tech/mdpdfmake.git"
   },
   "keywords": [
     "markdown",
@@ -39,10 +39,7 @@
     "marked": "^9.1.2",
     "pdfmake": "^0.2.8"
   },
-  "bugs": {
-    "url": "https://github.com/hackerbone/mdpdfmake/issues"
-  },
-  "homepage": "https://github.com/hackerbone/mdpdfmake#readme",
+  "homepage": "https://github.com/propra-tech/mdpdfmake#readme",
   "engines": {
     "node": ">=12.0.0"
   }
