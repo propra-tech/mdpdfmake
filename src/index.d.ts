@@ -1,4 +1,4 @@
-declare module "mdpdfmake" {
+declare module "@propra/mdpdfmake" {
   import { TDocumentDefinitions } from "pdfmake/interfaces";
 
   function mdpdfmake(
