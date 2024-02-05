@@ -1,10 +1,7 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
-    "esModuleInterop": true,
     "target": "es6",
-    "moduleResolution": "node",
-    "sourceMap": true,
+    "moduleResolution": "bundler",
     "outDir": "dist"
   },
   "lib": ["es2015"]
