@@ -4,12 +4,15 @@ Finding a converter that can convert Markdown to PDFMake can be difficult. This 
 
 This allows you to easily create PDF documents from your Markdown files.
 
+>[!IMPORTANT]
+>This is a fork that removes support for images in exchange for compatibility with browser
+
 ### Features
 
 - `Headers`: Supports all levels of Markdown headers.
 - `Lists`: Supports both ordered and unordered lists.
 - `Links`: Converts Markdown links into clickable links in the PDF.
-- `Images`: Converts Markdown image syntax into images in the PDF.
+- ~~`Images`: Converts Markdown image syntax into images in the PDF.~~
 - `Text Styling`: Supports bold, italic, strikethrough, and underline text styles.
 - `Complex Markdown`: Supports complex Markdown syntax such as nested bold/italic text, and nested blockquote paragraphs.
 
@@ -40,8 +43,7 @@ This is a paragraph with **bold** text and *italic* text.
 - List Item 2
 
 > Blockquote
-
-![Image](https://cdn.pixabay.com/photo/2018/01/23/23/53/rick-and-morty-3102795_1280.jpg)`;
+`;
 
 mdpdfmake(markdown, options).then((docDefinition) => {
   // Use docDefinition with a PDFMake instance to generate a PDF
