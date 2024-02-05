@@ -35,6 +35,7 @@
     "typescript": "^5.2.2"
   },
   "dependencies": {
+    "@types/marked": "^6.0.0",
     "marked": "^9.1.2",
     "pdfmake": "^0.2.8"
   },

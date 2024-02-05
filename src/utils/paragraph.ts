@@ -8,7 +8,7 @@ export const pdfMakeParagraph = async (
   push: boolean = true
 ) => {
   if (token.tokens && token.tokens.length > 0) {
-    let inlineElements: any[] = [];
+    const inlineElements: any[] = [];
 
     for (const childToken of token.tokens) {
       switch (childToken.type) {
