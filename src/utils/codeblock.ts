@@ -1,5 +1,6 @@
 import { Tokens } from "Tokens";
 import { getStyle } from "./text";
+import { globalOptions } from "../globalOptions";
 
 export const pdfMakeCodeblock = async (
   token: Tokens.Code | Tokens.Generic,
@@ -51,7 +52,7 @@ export const pdfMakeCodeblock = async (
         },
       },
     ],
-    margin: [0, 5, 0, 5],
+    margin: globalOptions.codeblock.margin,
   };
 
   if (push) {

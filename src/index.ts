@@ -11,34 +11,30 @@ import { pdfMakeList } from "./utils/list";
 import { pdfMakeBlockquote } from "./utils/blockquote";
 import { pdfMakeCodeblock } from "./utils/codeblock";
 import { pdfMakeHR } from "./utils/hr";
-
-interface MOptions {
-  headingFontSizes: number[];
-  headingUnderline?: boolean;
-}
-
-export const globalOptions: MOptions = {
-  headingFontSizes: [36, 30, 24, 18, 15, 12],
-  headingUnderline: true,
-};
+import { MOptions } from "./types";
+import { globalOptions } from "./globalOptions";
 
 async function mdpdfmake(
   markdown: string,
   options?: MOptions
 ): Promise<TDocumentDefinitions> {
-  // Set default options
-  if (options?.headingFontSizes?.length > 0) {
-    // override only added values
-    options.headingFontSizes.forEach((size, index) => {
-      globalOptions.headingFontSizes[index] = size;
-    });
+  if (options) {
+    for (const key in options) {
+      if (key === "headings") {
+        for (const heading in options.headings) {
+          if (options.headings[heading]) {
+            Object.assign(
+              globalOptions.headings[heading],
+              options.headings[heading]
+            );
+          }
+        }
+      } else {
+        Object.assign(globalOptions[key], options[key]);
+      }
+    }
   }
 
-  if (options?.headingUnderline !== undefined) {
-    globalOptions.headingUnderline = options.headingUnderline;
-  }
-
-  // Tokenize markdown
   const tokens = lexer(markdown);
   const content: any[] = [];
 
@@ -65,7 +61,7 @@ async function mdpdfmake(
         break;
 
       case "hr":
-        await pdfMakeHR(token, content);
+        await pdfMakeHR(content);
         break;
 
       case "space":

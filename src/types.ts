@@ -1,14 +1,4 @@
-declare module "@propra/mdpdfmake" {
-  import { TDocumentDefinitions } from "pdfmake/interfaces";
-
-  function mdpdfmake(
-    markdown: string,
-    options?: MOptions
-  ): Promise<TDocumentDefinitions>;
-
-  export { mdpdfmake };
-}
-interface MOptions {
+export interface MOptions {
   headings?: {
     h1?: {
       fontSize?: number;

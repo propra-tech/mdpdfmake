@@ -1,5 +1,6 @@
 import { Tokens } from "Tokens";
 import { pdfMakeText } from "./text";
+import { globalOptions } from "../globalOptions";
 
 export const pdfMakeList = async (
   token: Tokens.List | Tokens.Generic,
@@ -34,7 +35,7 @@ export const pdfMakeList = async (
 
   const listStructure = {
     [listFormat]: listContent.map((itemContent) => itemContent.text),
-    margin: [0, 5, 0, 5], // Margin for the entire list
+    margin: globalOptions.list.margin,
   };
 
   if (push) {
