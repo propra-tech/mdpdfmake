@@ -1,6 +1,7 @@
 import { Tokens } from "Tokens";
 import { pdfMakeText } from "./text";
 import { pdfMakeCodeblock } from "./codeblock";
+import { globalOptions } from "../globalOptions";
 
 export const pdfMakeParagraph = async (
   token: Tokens.Paragraph | Tokens.Generic,
@@ -54,7 +55,10 @@ export const pdfMakeParagraph = async (
       return content[content.length - 1];
     }
   } else {
-    const simpleParagraph = { text: token.text, margin: [0, 5, 0, 5] };
+    const simpleParagraph = {
+      text: token.text,
+      margin: globalOptions.paragraph.margin,
+    };
     if (push) content.push(simpleParagraph);
     return simpleParagraph;
   }

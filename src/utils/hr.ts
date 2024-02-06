@@ -1,24 +1,20 @@
 import { Tokens } from "Tokens";
+import { globalOptions } from "../globalOptions";
 
-export const pdfMakeHR = async (
-  token: Tokens.Hr | Tokens.Generic,
-  content: any[],
-  push: boolean = true
-) => {
-  // Define the horizontal rule structure
+export const pdfMakeHR = async (content: any[], push: boolean = true) => {
   const horizontalRule = {
     canvas: [
       {
         type: "line",
         x1: 0,
         y1: 5,
-        x2: 515, // Width of the line
+        x2: globalOptions.hr.lineWidth,
         y2: 5,
-        lineWidth: 1, // Thickness of the line
-        lineColor: "#2c2c2c", // Color of the line
+        lineWidth: globalOptions.hr.lineThickness,
+        lineColor: globalOptions.hr.lineColor,
       },
     ],
-    margin: [0, 10, 0, 10], // Margin around the HR (top, right, bottom, left)
+    margin: globalOptions.hr.margin,
   };
 
   if (push) {

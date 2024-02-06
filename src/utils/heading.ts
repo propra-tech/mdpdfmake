@@ -1,21 +1,17 @@
 import { Tokens } from "Tokens";
-import { globalOptions } from "../index";
+import { globalOptions } from "../globalOptions";
 
 export const pdfMakeHeading = (
   token: Tokens.Heading | Tokens.Generic,
   content: any[],
   push: boolean = true
 ) => {
-  const fontSize = globalOptions.headingFontSizes[token.depth - 1];
-  const bold = true;
-  const margin = [0, 5, 0, 5];
-  const style = {};
-
-  if (token.depth === 1 || token.depth === 2) {
-    if (globalOptions.headingUnderline) style["decoration"] = "underline";
-    margin[1] = 10;
-    margin[3] = 10;
-  }
+  const fontSize = globalOptions.headings[`h${token.depth}`].fontSize;
+  const bold = globalOptions.headings[`h${token.depth}`].bold;
+  const margin = globalOptions.headings[`h${token.depth}`].margin;
+  const style = globalOptions.headings[`h${token.depth}`].underline
+    ? { decoration: "underline" }
+    : {};
 
   if (push) {
     content.push({

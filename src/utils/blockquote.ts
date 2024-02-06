@@ -2,6 +2,7 @@ import { Tokens } from "Tokens";
 import { pdfMakeParagraph } from "./paragraph";
 import { pdfMakeText } from "./text";
 import { pdfMakeCodeblock } from "./codeblock";
+import { globalOptions } from "../globalOptions";
 
 export const pdfMakeBlockquote = async (
   token: Tokens.Blockquote | Tokens.Generic,
@@ -27,9 +28,9 @@ export const pdfMakeBlockquote = async (
 
         content.push({
           ...pcontent,
-          italics: true,
-          margin: [0, 5, 0, 5],
-          background: "#eae7f2", // a light purple highlight
+          italics: globalOptions.blockquote.italics,
+          margin: globalOptions.blockquote.margin,
+          background: globalOptions.blockquote.background,
         });
         break;
       }
