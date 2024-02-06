@@ -1,4 +1,3 @@
-import { Tokens } from "Tokens";
 import { globalOptions } from "../globalOptions";
 
 export const pdfMakeHR = async (content: any[], push: boolean = true) => {
