@@ -19,13 +19,18 @@ async function mdpdfmake(
   options?: MOptions
 ): Promise<TDocumentDefinitions> {
   if (options) {
-    for (const [key, value] of Object.entries(options)) {
-      if (typeof value === "object") {
-        for (const [nestedKey, nestedValue] of Object.entries(value)) {
-          globalOptions[key][nestedKey] = nestedValue;
+    for (const key in options) {
+      if (key === "headings") {
+        for (const heading in options.headings) {
+          if (options.headings[heading]) {
+            Object.assign(
+              globalOptions.headings[heading],
+              options.headings[heading]
+            );
+          }
         }
       } else {
-        globalOptions[key] = value;
+        Object.assign(globalOptions[key], options[key]);
       }
     }
   }
