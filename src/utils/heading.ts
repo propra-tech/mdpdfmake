@@ -9,9 +9,6 @@ export const pdfMakeHeading = (
   const fontSize = globalOptions.headings[`h${token.depth}`].fontSize;
   const bold = globalOptions.headings[`h${token.depth}`].bold;
   const margin = globalOptions.headings[`h${token.depth}`].margin;
-  const style = globalOptions.headings[`h${token.depth}`].underline
-    ? { decoration: "underline" }
-    : {};
 
   if (push) {
     content.push({
@@ -19,7 +16,6 @@ export const pdfMakeHeading = (
       fontSize,
       bold,
       margin,
-      style,
     });
   }
 
@@ -28,6 +24,5 @@ export const pdfMakeHeading = (
     fontSize,
     bold,
     margin,
-    style,
   };
 };
