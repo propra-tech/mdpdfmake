@@ -5,7 +5,6 @@ Finding a converter that can convert Markdown to PDFMake can be difficult. This 
 This allows you to easily create PDF documents from your Markdown files.
 
 > [!IMPORTANT]
-
 > This is a fork that removes support for images in exchange for compatibility with browser
 
 ### Features
@@ -43,14 +42,14 @@ import { mdpdfmake } from  "mdpdfmake";
 
 
 const  options = {
-	headings: {
-		h1: {
-			fontSize:  30,
-			bold:  false,
-			margin: [0, 10, 0, 10],
-		},
-		h2: { ...
-	}
+  headings: {
+	h1: {
+		fontSize:  30,
+		bold:  false,
+		margin: [0, 10, 0, 10],
+	},
+	h2: { ...
+  }
 };
 
 
@@ -59,13 +58,9 @@ const  markdown = `# Heading
 
 This is a paragraph with **bold** text and *italic* text.
 
-
-
 - List Item 1
 
 - List Item 2
-
-
 
 > Blockquote
 
@@ -83,45 +78,72 @@ mdpdfmake(markdown, options).then((docDefinition) => {
 
 > Note: The response from the convert function is a Promise, so you will need to use async/await or .then() to get the result.
 
-### API Reference
+## API Reference
 
 `mdpdfmake(markdown: string, options?: MOptions): Promise<TDocumentDefinitions>` - Converts the given Markdown string into a PDFMake document definition.
 
-#### Parameters:
+### Parameters:
 
 - `markdown` (string, options?): Converts the given Markdown string into a PDFMake document definition.
 
-#### Options
+### Options
 
-| Option | Type | Description | Default |
+#### Headings
+*An object for each headings ( h1 - h6 ) to set custom font size, bold, margins and underline*
+##### Defaults 	
+    headings: {
+	  h1: { fontSize: 36, bold: true, margin: [0, 10, 0, 10] },
+	  h2: { fontSize: 30, bold: true, margin: [0, 10, 0, 10] },
+	  h3: { fontSize: 24, bold: true, margin: [0, 5, 0, 5], },
+	  h4: { fontSize: 18, bold: true, margin: [0, 5, 0, 5], },
+	  h5: { fontSize: 15, bold: true, margin: [0, 5, 0, 5], },
+	  h6: { fontSize: 12, bold: true, margin: [0, 5, 0, 5], }
+	}
+#### Type
 
-| ------------------ | -------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------- |
+    headings?: { h1?: { fontSize?: number; bold?: boolean; margin?: number[]; underline?: boolean; }; h2?: ... }
+___
+#### Hr
+*Custom settings for hr line*
+##### Defaults 	
+    hr: { lineThickness: 1, lineWidth: 515, lineColor: "#2c2c2c", margin: [0, 10, 0, 10], }
+   #### Type
+    hr?: { lineThickness?: number; lineWidth?: number; lineColor?: string; margin?: number[]; };
 
-| `headings` | Defaults:
+___
+#### Blockquote
+*Custom settings for blockquote*
+##### Defaults 	
+    { italics: true, margin: [0, 5, 0, 5], background: "#eae7f2", } 
+#### Type
 
-h1: { fontSize: 36, bold: true, margin: [0, 10, 0, 10], underline: true, }
+    blockquote?: { italics?: boolean; margin?: number[]; background?: string; };
 
-h2: { fontSize: 30, bold: true, margin: [0, 10, 0, 10], underline: true, }
+   ___
+#### List
+*Set custom margins for list*
+##### Defaults 	
+    { margin: [0, 5, 0, 5] } 
+#### Type
 
-h3: { fontSize: 24, bold: true, margin: [0, 5, 0, 5], }
-
-h4: { fontSize: 18, bold: true, margin: [0, 5, 0, 5], }
-
-h5: { fontSize: 15, bold: true, margin: [0, 5, 0, 5], }
-
-h6: { fontSize: 12, bold: true, margin: [0, 5, 0, 5], }
-
-| An object for each headings ( h1 - h6 ) to set custom font size, bold, margins and underline.
-
-| `hr` | Default: { lineThickness: 1, lineWidth: 515, lineColor: "#2c2c2c", margin: [0, 10, 0, 10], } | Custom settings for hr line
-
-| `blockquote` | Default: { italics: true, margin: [0, 5, 0, 5], background: "#eae7f2", } | Custom settings for blockquote
-
-| `list` | Default: { margin: [0, 5, 0, 5], } | Set custom margins for list
-
-| `paragraph` | Default: { margin: [0, 5, 0, 5], } | Set custom margins for paragraph
-
-| `codeblock` | Default: { margin: [0, 5, 0, 5], } | Set custom margins for codeblock
+    list?: { margin?: number[]; };
+___
+#### Paragraph
+*Set custom margins for paragraph*
+##### Defaults 	
+    { margin: [0, 5, 0, 5] } 
+#### Type
+    paragraph?: { margin?: number[]; };
+  ___
+  
+  #### Codeblock
+*Set custom margins for codeblock*
+##### Defaults 	
+    { margin: [0, 5, 0, 5] } 
+#### Type
+    codeblock?: { margin?: number[]; };
+  ___
+   
 
 ### Upcoming Features
 
