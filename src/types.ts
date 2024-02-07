@@ -4,37 +4,31 @@ export interface MOptions {
       fontSize?: number;
       bold?: boolean;
       margin?: number[];
-      underline?: boolean;
     };
     h2?: {
       fontSize?: number;
       bold?: boolean;
       margin?: number[];
-      underline?: boolean;
     };
     h3?: {
       fontSize?: number;
       bold?: boolean;
       margin?: number[];
-      underline?: boolean;
     };
     h4?: {
       fontSize?: number;
       bold?: boolean;
       margin?: number[];
-      underline?: boolean;
     };
     h5?: {
       fontSize?: number;
       bold?: boolean;
       margin?: number[];
-      underline?: boolean;
     };
     h6?: {
       fontSize?: number;
       bold?: boolean;
       margin?: number[];
-      underline?: boolean;
     };
   };
   hr?: {

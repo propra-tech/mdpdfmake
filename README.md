@@ -89,61 +89,95 @@ mdpdfmake(markdown, options).then((docDefinition) => {
 ### Options
 
 #### Headings
-*An object for each headings ( h1 - h6 ) to set custom font size, bold, margins and underline*
-##### Defaults 	
+
+_An object for each headings ( h1 - h6 ) to set custom font size, bold, margins and underline_
+
+##### Defaults
+
     headings: {
-	  h1: { fontSize: 36, bold: true, margin: [0, 10, 0, 10] },
-	  h2: { fontSize: 30, bold: true, margin: [0, 10, 0, 10] },
-	  h3: { fontSize: 24, bold: true, margin: [0, 5, 0, 5], },
-	  h4: { fontSize: 18, bold: true, margin: [0, 5, 0, 5], },
-	  h5: { fontSize: 15, bold: true, margin: [0, 5, 0, 5], },
-	  h6: { fontSize: 12, bold: true, margin: [0, 5, 0, 5], }
-	}
+      h1: { fontSize: 36, bold: true, margin: [0, 10, 0, 10] },
+      h2: { fontSize: 30, bold: true, margin: [0, 10, 0, 10] },
+      h3: { fontSize: 24, bold: true, margin: [0, 5, 0, 5], },
+      h4: { fontSize: 18, bold: true, margin: [0, 5, 0, 5], },
+      h5: { fontSize: 15, bold: true, margin: [0, 5, 0, 5], },
+      h6: { fontSize: 12, bold: true, margin: [0, 5, 0, 5], }
+    }
+
 #### Type
 
-    headings?: { h1?: { fontSize?: number; bold?: boolean; margin?: number[]; underline?: boolean; }; h2?: ... }
-___
+    headings?: { h1?: { fontSize?: number; bold?: boolean; margin?: number[]; }; h2?: ... }
+
+---
+
 #### Hr
-*Custom settings for hr line*
-##### Defaults 	
+
+_Custom settings for hr line_
+
+##### Defaults
+
     hr: { lineThickness: 1, lineWidth: 515, lineColor: "#2c2c2c", margin: [0, 10, 0, 10], }
-   #### Type
+
+#### Type
+
     hr?: { lineThickness?: number; lineWidth?: number; lineColor?: string; margin?: number[]; };
 
-___
+---
+
 #### Blockquote
-*Custom settings for blockquote*
-##### Defaults 	
-    { italics: true, margin: [0, 5, 0, 5], background: "#eae7f2", } 
+
+_Custom settings for blockquote_
+
+##### Defaults
+
+    { italics: true, margin: [0, 5, 0, 5], background: "#eae7f2", }
+
 #### Type
 
     blockquote?: { italics?: boolean; margin?: number[]; background?: string; };
 
-   ___
+---
+
 #### List
-*Set custom margins for list*
-##### Defaults 	
-    { margin: [0, 5, 0, 5] } 
+
+_Set custom margins for list_
+
+##### Defaults
+
+    { margin: [0, 5, 0, 5] }
+
 #### Type
 
     list?: { margin?: number[]; };
-___
+
+---
+
 #### Paragraph
-*Set custom margins for paragraph*
-##### Defaults 	
-    { margin: [0, 5, 0, 5] } 
+
+_Set custom margins for paragraph_
+
+##### Defaults
+
+    { margin: [0, 5, 0, 5] }
+
 #### Type
+
     paragraph?: { margin?: number[]; };
-  ___
-  
-  #### Codeblock
-*Set custom margins for codeblock*
-##### Defaults 	
-    { margin: [0, 5, 0, 5] } 
+
+---
+
+#### Codeblock
+
+_Set custom margins for codeblock_
+
+##### Defaults
+
+    { margin: [0, 5, 0, 5] }
+
 #### Type
+
     codeblock?: { margin?: number[]; };
-  ___
-   
+
+---
 
 ### Upcoming Features
 

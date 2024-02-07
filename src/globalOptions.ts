@@ -6,13 +6,11 @@ export const globalOptions: MOptions = {
       fontSize: 36,
       bold: true,
       margin: [0, 10, 0, 10],
-      underline: true,
     },
     h2: {
       fontSize: 30,
       bold: true,
       margin: [0, 10, 0, 10],
-      underline: true,
     },
     h3: {
       fontSize: 24,
