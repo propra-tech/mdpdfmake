@@ -53,9 +53,11 @@ interface MOptions {
     background?: string;
   };
   list?: {
+    fontSize?: number;
     margin?: number[];
   };
   paragraph?: {
+    fontSize?: number;
     margin?: number[];
   };
   codeblock?: {

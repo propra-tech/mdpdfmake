@@ -45,9 +45,11 @@ export const globalOptions: MOptions = {
     background: "#eae7f2",
   },
   list: {
+    fontSize: 14,
     margin: [0, 5, 0, 5],
   },
   paragraph: {
+    fontSize: 14,
     margin: [0, 5, 0, 5],
   },
   codeblock: {

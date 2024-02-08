@@ -38,14 +38,17 @@ export interface MOptions {
     margin?: number[];
   };
   blockquote?: {
+    fontSize?: number;
     italics?: boolean;
     margin?: number[];
     background?: string;
   };
   list?: {
+    fontSize?: number;
     margin?: number[];
   };
   paragraph?: {
+    fontSize?: number;
     margin?: number[];
   };
   codeblock?: {

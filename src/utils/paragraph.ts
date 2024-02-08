@@ -46,6 +46,7 @@ export const pdfMakeParagraph = async (
     if (inlineElements.length > 0) {
       content.push({
         text: inlineElements,
+        fontSize: globalOptions.paragraph.fontSize,
         margin: [0, 5, 0, 5],
       });
     }
@@ -57,6 +58,7 @@ export const pdfMakeParagraph = async (
   } else {
     const simpleParagraph = {
       text: token.text,
+      fontSize: globalOptions.paragraph.fontSize,
       margin: globalOptions.paragraph.margin,
     };
     if (push) content.push(simpleParagraph);

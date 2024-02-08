@@ -36,6 +36,7 @@ export const pdfMakeList = async (
   const listStructure = {
     [listFormat]: listContent.map((itemContent) => itemContent.text),
     margin: globalOptions.list.margin,
+    fontSize: globalOptions.list.fontSize,
   };
 
   if (push) {
