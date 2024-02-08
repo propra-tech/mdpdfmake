@@ -139,29 +139,29 @@ _Custom settings for blockquote_
 
 #### List
 
-_Set custom margins for list_
+_Set custom margins and font size for list_
 
 ##### Defaults
 
-    { margin: [0, 5, 0, 5] }
+    { margin: [0, 5, 0, 5], fontSize: 14 }
 
 #### Type
 
-    list?: { margin?: number[]; };
+    list?: { margin?: number[]; fontSize?: number };
 
 ---
 
 #### Paragraph
 
-_Set custom margins for paragraph_
+_Set custom margins and font size for paragraph_
 
 ##### Defaults
 
-    { margin: [0, 5, 0, 5] }
+    { margin: [0, 5, 0, 5], fontSize: 14 }
 
 #### Type
 
-    paragraph?: { margin?: number[]; };
+    paragraph?: { margin?: number[]; fontSize?: number };
 
 ---
 
