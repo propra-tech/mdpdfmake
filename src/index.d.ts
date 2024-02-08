@@ -61,4 +61,7 @@ interface MOptions {
   codeblock?: {
     margin?: number[];
   };
+  defaultStyle?: {
+    font: string;
+  };
 }

@@ -78,9 +78,7 @@ async function mdpdfmake(
 
   return {
     content: content,
-    defaultStyle: {
-      font: "Roboto",
-    },
+    defaultStyle: globalOptions.defaultStyle,
   };
 }
 
