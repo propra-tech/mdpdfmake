@@ -3,7 +3,7 @@ import { globalOptions } from "../globalOptions";
 import { pdfMakeHeading } from "./heading";
 
 describe("utils/heading", () => {
-  describe("convert to markdown headings", () => {
+  describe("convert markdown to pdfmake headings", () => {
     it("convert h1", () => {
       const heading = {
         type: "heading",

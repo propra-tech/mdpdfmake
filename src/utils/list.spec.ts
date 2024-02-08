@@ -2,7 +2,7 @@ import { assert } from "chai";
 import { pdfMakeText } from "./text";
 
 describe("utils/list", () => {
-  describe("convert to markdown list", () => {
+  describe("convert markdown to pdfmake list", () => {
     it("convert ordered list", async () => {
       const list = {
         type: "list",

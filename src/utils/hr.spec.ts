@@ -3,7 +3,7 @@ import { pdfMakeHR } from "./hr";
 import { globalOptions } from "../globalOptions";
 
 describe("utils/hr", () => {
-  describe("convert to markdown hr", () => {
+  describe("convert markdown to pdfmake hr", () => {
     it("convert hr", async () => {
       const content = [];
       await pdfMakeHR(content);

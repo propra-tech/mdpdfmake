@@ -3,7 +3,7 @@ import { globalOptions } from "../globalOptions";
 import { pdfMakeBlockquote } from "./blockquote";
 
 describe("utils/blockquote", () => {
-  describe("convert to markdown blockquote", () => {
+  describe("convert markdown to pdfmake blockquote", () => {
     it("convert blockquote", async () => {
       const blockquote = {
         type: "paragraph",
