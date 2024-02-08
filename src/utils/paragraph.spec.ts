@@ -3,7 +3,7 @@ import { pdfMakeParagraph } from "./paragraph";
 import { assert } from "chai";
 
 describe("utils/paragraph", () => {
-  describe("convert to markdown paragraph", () => {
+  describe("convert markdown to pdfmake paragraph", () => {
     it("convert bolded text", async () => {
       const paragraph = {
         type: "paragraph",

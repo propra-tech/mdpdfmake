@@ -2,7 +2,7 @@ import { assert } from "chai";
 import { pdfMakeText } from "./text";
 
 describe("utils/text", () => {
-  describe("convert to markdown text", () => {
+  describe("convert markdown to pdfmake text", () => {
     it("convert bolded text", async () => {
       const text = {
         type: "strong",
