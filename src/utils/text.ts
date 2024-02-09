@@ -1,5 +1,6 @@
-import { Tokens } from "Tokens";
+import { Tokens } from "marked";
 import { pdfMakeCodeblock } from "./codeblock";
+import { mergetags } from "./mergetags";
 
 export const pdfMakeText = async (
   token: Tokens.Text | Tokens.Generic,
@@ -7,9 +8,7 @@ export const pdfMakeText = async (
   push: boolean = true
 ) => {
   if (token?.tokens && token?.tokens.length > 0) {
-    // Initialize an array to hold the text fragments
     const textFragments: any[] = [];
-
     for (const childToken of token.tokens) {
       let fragment: any;
       switch (childToken.type) {
@@ -17,12 +16,12 @@ export const pdfMakeText = async (
         case "em":
         case "codespan":
         case "del":
+        case "underline":
         case "link": {
           fragment = {
             text: childToken.text,
-            ...getStyle(childToken.type),
+            ...getStyle(childToken.type, childToken.text),
           };
-
           if (childToken.type === "link") {
             fragment.link = childToken.href;
           }
@@ -37,7 +36,7 @@ export const pdfMakeText = async (
         }
         case "text": {
           const textRecContent = await pdfMakeText(childToken, [], false);
-          textFragments.push(...textRecContent.map((f: any) => f.text)); // Flatten the text fragments
+          textFragments.push(...textRecContent.map((f: any) => f.text));
           break;
         }
         case "br":
@@ -65,12 +64,12 @@ export const pdfMakeText = async (
       case "em":
       case "codespan":
       case "del":
+      case "underline":
       case "link":
         fragment = {
           text: token.text,
-          ...getStyle(token.type),
+          ...getStyle(token.type, token.raw),
         };
-
         if (token.type === "link") {
           fragment.link = token.href;
         }
@@ -78,7 +77,7 @@ export const pdfMakeText = async (
         textFragments.push(fragment);
         break;
       case "text":
-        fragment = { text: token.raw };
+        fragment = { text: token.text };
         textFragments.push(fragment);
         break;
       case "code": {
@@ -97,13 +96,12 @@ export const pdfMakeText = async (
   }
 };
 
-// Helper function to get text style based on token type
-export function getStyle(type: string) {
+export function getStyle(type: string, text?: string) {
   switch (type) {
     case "strong":
-      return { bold: true };
+      return mergetags({ bold: true }, text);
     case "em":
-      return { italics: true };
+      return mergetags({ italics: true }, text);
     case "codespan":
       return {
         background: "#f0f0f0",
@@ -114,6 +112,9 @@ export function getStyle(type: string) {
       return { decoration: "lineThrough" };
     case "link":
       return { color: "blue", decoration: "underline" };
+    case "underline": {
+      return mergetags({ style: { decoration: "underline" } }, text);
+    }
     case "code":
       return {
         fontSize: 10, // Smaller font size for code
@@ -121,6 +122,8 @@ export function getStyle(type: string) {
         preserveLeadingSpaces: true, // Preserve indentation
         lineHeight: 1.2, // Adjust line height for better readability
       };
+    case "ul":
+      return mergetags({ style: { decoration: "underline" } }, text);
     default:
       return {};
   }

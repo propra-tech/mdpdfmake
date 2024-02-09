@@ -1,5 +1,6 @@
 import { assert } from "chai";
 import { mdpdfmake } from ".";
+import { globalOptions } from "./globalOptions";
 
 describe("index", () => {
   describe("convert markdown to pdfmake array", () => {
@@ -31,6 +32,7 @@ ___
                 { text: "italic", italics: true },
                 { text: " text." },
               ],
+              fontSize: globalOptions.paragraph.fontSize,
               margin: [0, 5, 0, 5],
             },
             {
@@ -38,6 +40,7 @@ ___
                 [{ text: ["List Item 1"], margin: [0, 5, 0, 5] }],
                 [{ text: ["List Item 2"], margin: [0, 5, 0, 5] }],
               ],
+              fontSize: globalOptions.list.fontSize,
               margin: [0, 5, 0, 5],
             },
             {
@@ -59,6 +62,7 @@ ___
               margin: [0, 5, 0, 5],
               italics: true,
               background: "#eae7f2",
+              fontSize: globalOptions.paragraph.fontSize,
             },
             { text: [] },
           ],
@@ -111,6 +115,7 @@ ___
                 { text: "italic", italics: true },
                 { text: " text." },
               ],
+              fontSize: globalOptions.paragraph.fontSize,
               margin: [0, 5, 0, 5],
             },
             {
@@ -118,6 +123,7 @@ ___
                 [{ text: ["List Item 1"], margin: [0, 5, 0, 5] }],
                 [{ text: ["List Item 2"], margin: [0, 5, 0, 5] }],
               ],
+              fontSize: globalOptions.list.fontSize,
               margin: [0, 5, 0, 5],
             },
             {
@@ -139,6 +145,7 @@ ___
               margin: [0, 5, 0, 5],
               italics: true,
               background: "#eae7f2",
+              fontSize: globalOptions.paragraph.fontSize,
             },
             { text: [] },
           ],

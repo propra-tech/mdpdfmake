@@ -16,6 +16,7 @@ describe("utils/paragraph", () => {
 
       assert.deepEqual(content, [
         {
+          fontSize: globalOptions.paragraph.fontSize,
           text: [{ bold: true, text: "Thank you!" }],
           margin: globalOptions.paragraph.margin,
         },
@@ -34,6 +35,7 @@ describe("utils/paragraph", () => {
 
       assert.deepEqual(content, [
         {
+          fontSize: globalOptions.paragraph.fontSize,
           text: [{ italics: true, text: "Thank you!" }],
           margin: globalOptions.paragraph.margin,
         },
@@ -56,6 +58,7 @@ describe("utils/paragraph", () => {
     await pdfMakeParagraph(paragraph, content);
     assert.deepEqual(content, [
       {
+        fontSize: globalOptions.paragraph.fontSize,
         text: [
           { text: "Hello " },
           { italics: true, text: "world" },
@@ -77,6 +80,7 @@ describe("utils/paragraph", () => {
     await pdfMakeParagraph(paragraph, content);
     assert.deepEqual(content, [
       {
+        fontSize: globalOptions.paragraph.fontSize,
         text: [
           {
             text: "Hello world",

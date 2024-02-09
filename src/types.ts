@@ -38,7 +38,6 @@ export interface MOptions {
     margin?: number[];
   };
   blockquote?: {
-    fontSize?: number;
     italics?: boolean;
     margin?: number[];
     background?: string;

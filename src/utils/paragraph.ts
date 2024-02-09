@@ -1,4 +1,4 @@
-import { Tokens } from "Tokens";
+import { Tokens } from "marked";
 import { pdfMakeText } from "./text";
 import { pdfMakeCodeblock } from "./codeblock";
 import { globalOptions } from "../globalOptions";
@@ -10,6 +10,10 @@ export const pdfMakeParagraph = async (
 ) => {
   if (token.tokens && token.tokens.length > 0) {
     const inlineElements: any[] = [];
+    const tags = [
+      { pattern: /<u>/g, value: "underline" },
+      // Add more patterns and corresponding styles as needed
+    ];
 
     for (const childToken of token.tokens) {
       switch (childToken.type) {
@@ -17,6 +21,7 @@ export const pdfMakeParagraph = async (
         case "em":
         case "codespan":
         case "del":
+        case "underline":
         case "link": {
           // delete tokens array from childToken
           const fixedChildTokens: any = childToken;
@@ -36,6 +41,15 @@ export const pdfMakeParagraph = async (
           inlineElements.push(...textRecContentText);
           break;
         }
+        case "html":
+          const index = token.tokens.indexOf(childToken);
+          for (const tag of tags) {
+            const match = tag.pattern.test(childToken.raw);
+            if (match) {
+              token.tokens[index + 1].type = tag.value;
+            }
+          }
+          break;
         default:
           console.warn(`Unhandled token type: ${childToken.type}`);
           inlineElements.push({ text: childToken.raw });
