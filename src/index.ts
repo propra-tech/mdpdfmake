@@ -1,7 +1,10 @@
+// Markdown Tokenizer
 import { lexer } from "marked";
 
+// Types
 import { TDocumentDefinitions } from "pdfmake/interfaces";
 
+// Utils
 import { pdfMakeParagraph } from "./utils/paragraph";
 import { pdfMakeHeading } from "./utils/heading";
 import { pdfMakeList } from "./utils/list";

@@ -67,6 +67,7 @@ export const pdfMakeText = async (
       case "underline":
       case "link":
         fragment = {
+          text: token.text,
           ...getStyle(token.type, token.raw),
         };
         if (token.type === "link") {
@@ -108,9 +109,9 @@ export function getStyle(type: string, text?: string) {
         margin: [0, 5, 0, 5],
       };
     case "del":
-      return mergetags({ decoration: "lineThrough" }, text);
+      return { decoration: "lineThrough" };
     case "link":
-      return mergetags({ color: "blue", decoration: "underline" }, text);
+      return { color: "blue", decoration: "underline" };
     case "underline": {
       return mergetags({ style: { decoration: "underline" } }, text);
     }
