@@ -1,4 +1,4 @@
-import { Tokens } from "Tokens";
+import { Tokens } from "marked";
 import { pdfMakeText } from "./text";
 import { globalOptions } from "../globalOptions";
 

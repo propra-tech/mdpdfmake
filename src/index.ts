@@ -35,6 +35,12 @@ async function mdpdfmake(
     }
   }
 
+  // marked.use({
+  //   async: true,
+  //   pedantic: false,
+  //   gfm: true,
+  // });
+
   const tokens = lexer(markdown);
   const content: any[] = [];
 
@@ -81,5 +87,33 @@ async function mdpdfmake(
     defaultStyle: globalOptions.defaultStyle,
   };
 }
+
+const options = {
+  headings: {
+    h1: {
+      fontSize: 24,
+
+      underline: false,
+    },
+  },
+  hr: {
+    lineThickness: 8,
+    lineWidth: 532,
+    lineColor: "#fc2c2c",
+    margin: [0, 5, 0, 10],
+  },
+};
+
+const markdown = `
+# ***<u>Notice to all residents</u>***
+
+The parking lot will be ***<u>cleared</u>*** on ***<u>January</u>*** 31,
+sdsdsdsd sdsdsdds <u>test</u> blablabla
+`;
+
+mdpdfmake(markdown, options).then((docDefinition) => {
+  // Use docDefinition with a PDFMake instance to generate a PDF
+  console.log(docDefinition.content[1]);
+});
 
 export { mdpdfmake };
