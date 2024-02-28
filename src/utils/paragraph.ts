@@ -42,8 +42,8 @@ export const pdfMakeParagraph = async (
           break;
         }
         case "html":
-          const index = token.tokens.indexOf(childToken);
           for (const tag of tags) {
+            const index = token.tokens.indexOf(childToken);
             const match = tag.pattern.test(childToken.raw);
             if (match) {
               token.tokens[index + 1].type = tag.value;

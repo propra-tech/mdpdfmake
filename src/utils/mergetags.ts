@@ -5,7 +5,7 @@ const cleanString = (text: string) => {
     .replace(/\*/g, "");
 };
 
-export const mergetags = (currentTag: {}, text?: string) => {
+export const mergetags = (currentTag: object, text?: string) => {
   const extraTags = [
     { pattern: /\*\*(.*?)\*\*/g, style: { bold: true } },
     {
