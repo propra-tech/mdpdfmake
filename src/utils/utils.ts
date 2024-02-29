@@ -1,7 +1,8 @@
-const unicodes = ["&#x20;"];
+const unicodes = [{ code: "&#x20;", replace: " " }];
+
 export const cleanUnicodefromText = (text: string) => {
-  unicodes.forEach((unicode) => {
-    text = text.replaceAll(unicode, "");
+  unicodes.forEach(({ code, replace }) => {
+    text = text.replaceAll(code, replace);
   });
   return text;
 };
