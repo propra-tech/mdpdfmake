@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
-    "target": "es2021",
+    "target": "ESNext",
     "moduleResolution": "bundler",
     "outDir": "dist"
   },
-  "lib": ["es2015"]
+  "lib": ["es2021"]
 }
