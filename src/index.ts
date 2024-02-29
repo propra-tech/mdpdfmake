@@ -13,6 +13,7 @@ import { pdfMakeCodeblock } from "./utils/codeblock";
 import { pdfMakeHR } from "./utils/hr";
 import { MOptions } from "./types";
 import { globalOptions } from "./globalOptions";
+import { cleanUnicodefromText } from "./utils/utils";
 
 async function mdpdfmake(
   markdown: string,
@@ -35,7 +36,7 @@ async function mdpdfmake(
     }
   }
 
-  const tokens = lexer(markdown);
+  const tokens = lexer(cleanUnicodefromText(markdown));
   const content: any[] = [];
 
   for (const token of tokens) {
