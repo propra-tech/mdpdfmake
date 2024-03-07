@@ -5,7 +5,7 @@ Finding a converter that can convert Markdown to PDFMake can be difficult. This 
 This allows you to easily create PDF documents from your Markdown files.
 
 > [!IMPORTANT]
-> This is a fork that removes support for images in exchange for compatibility with browser
+> This is a fork that is compatible with browser
 
 ### Features
 
@@ -15,7 +15,7 @@ This allows you to easily create PDF documents from your Markdown files.
 
 - `Links`: Converts Markdown links into clickable links in the PDF.
 
-- ~~`Images`: Converts Markdown image syntax into images in the PDF.~~
+- `Images`: Converts Markdown image syntax into images in the PDF.~~
 
 - `Text Styling`: Supports bold, italic, strikethrough, and underline text styles.
 
