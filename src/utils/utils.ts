@@ -1,4 +1,5 @@
 const unicodes = [{ code: "&#x20;", replace: " " }];
+import https from "https";
 
 export const cleanUnicodefromText = (text: string) => {
   unicodes.forEach(({ code, replace }) => {
@@ -21,10 +22,8 @@ export async function imageURLToBase64(url: string) {
       reader.onerror = reject;
     });
   } else {
-    const https = require("https");
-
     return new Promise((resolve, reject) => {
-      const request = https
+      https
         .get(url, (response) => {
           const data = [];
           response.on("data", (chunk) => data.push(chunk));
