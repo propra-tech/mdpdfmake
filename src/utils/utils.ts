@@ -1,8 +1,3 @@
-const unicodes = [{ code: "&#x20;", replace: " " }];
+import { decode } from "html-entities";
 
-export const cleanUnicodefromText = (text: string) => {
-  unicodes.forEach(({ code, replace }) => {
-    text = text.replaceAll(code, replace);
-  });
-  return text;
-};
+export const cleanUnicodefromText = (text: string) => decode(text);

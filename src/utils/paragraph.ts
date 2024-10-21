@@ -2,6 +2,7 @@ import { Tokens } from "marked";
 import { pdfMakeText } from "./text";
 import { pdfMakeCodeblock } from "./codeblock";
 import { globalOptions } from "../globalOptions";
+import { cleanUnicodefromText } from "./utils";
 
 export const pdfMakeParagraph = async (
   token: Tokens.Paragraph | Tokens.Generic,
@@ -59,7 +60,9 @@ export const pdfMakeParagraph = async (
     // Push remaining inline elements after the last image (if any)
     if (inlineElements.length > 0) {
       content.push({
-        text: inlineElements,
+        text: inlineElements.map((element) => ({
+          text: cleanUnicodefromText(element.text),
+        })),
         fontSize: globalOptions.paragraph.fontSize,
         margin: [0, 5, 0, 5],
       });
@@ -71,7 +74,7 @@ export const pdfMakeParagraph = async (
     }
   } else {
     const simpleParagraph = {
-      text: token.text,
+      text: cleanUnicodefromText(token.text),
       fontSize: globalOptions.paragraph.fontSize,
       margin: globalOptions.paragraph.margin,
     };
