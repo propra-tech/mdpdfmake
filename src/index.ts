@@ -14,6 +14,8 @@ import { pdfMakeHR } from "./utils/hr";
 import { MOptions } from "./types";
 import { globalOptions } from "./globalOptions";
 import { cleanUnicodefromText } from "./utils/utils";
+import { pdfMakeImage } from "./utils/image";
+import { pdfMakeHTML } from "./utils/html";
 
 async function mdpdfmake(
   markdown: string,
@@ -57,6 +59,10 @@ async function mdpdfmake(
         await pdfMakeBlockquote(token, content);
         break;
 
+      case "image":
+        await pdfMakeImage(token, content);
+        break;
+
       case "code":
         await pdfMakeCodeblock(token, content);
         break;
@@ -70,6 +76,10 @@ async function mdpdfmake(
 
       case "br":
         content.push({ text: "\n" });
+        break;
+
+      case "html":
+        await pdfMakeHTML(token, content);
         break;
 
       default:

@@ -2,6 +2,8 @@ import { Tokens } from "marked";
 import { pdfMakeText } from "./text";
 import { pdfMakeCodeblock } from "./codeblock";
 import { globalOptions } from "../globalOptions";
+import { pdfMakeImage } from "./image";
+import { pdfMakeHTML } from "./html";
 import { cleanUnicodefromText } from "./utils";
 
 export const pdfMakeParagraph = async (
@@ -10,7 +12,7 @@ export const pdfMakeParagraph = async (
   push: boolean = true
 ) => {
   if (token.tokens && token.tokens.length > 0) {
-    const inlineElements: any[] = [];
+    let inlineElements: any[] = [];
     const tags = [
       { pattern: /<u>/g, value: "underline" },
       // Add more patterns and corresponding styles as needed
@@ -18,6 +20,21 @@ export const pdfMakeParagraph = async (
 
     for (const childToken of token.tokens) {
       switch (childToken.type) {
+        case "image": {
+          // If there are inline elements before the image, push them as a paragraph
+          if (inlineElements.length > 0) {
+            content.push({
+              text: inlineElements,
+              margin: [0, 5, 0, 5],
+            });
+            inlineElements = []; // Reset inline elements
+          }
+
+          // Process and push the image as a separate block
+          const imageFragment = await pdfMakeImage(childToken, [], false);
+          content.push(imageFragment);
+          break;
+        }
         case "strong":
         case "em":
         case "codespan":
@@ -47,7 +64,10 @@ export const pdfMakeParagraph = async (
             const index = token.tokens.indexOf(childToken);
             const match = tag.pattern.test(childToken.raw);
             if (match) {
-              token.tokens[index + 1].type = tag.value;
+              if (token.tokens[index + 1])
+                token.tokens[index + 1].type = tag.value;
+            } else {
+              pdfMakeHTML(childToken, content, false);
             }
           }
           break;
