@@ -1,6 +1,6 @@
 {
   "name": "@propra/mdpdfmake",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "A Node.js library to convert Markdown to PDFMake Syntax",
   "main": "dist/index.js",
   "types": "src/index.d.ts",
