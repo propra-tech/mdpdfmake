@@ -1,6 +1,7 @@
 import { Tokens } from "marked";
 import { globalOptions } from "../globalOptions";
 import { mergetags } from "./mergetags";
+import { cleanUnicodefromText } from "./utils";
 
 export const pdfMakeHeading = (
   token: Tokens.Heading | Tokens.Generic,
@@ -15,7 +16,7 @@ export const pdfMakeHeading = (
 
   if (push) {
     content.push({
-      text: token.text,
+      text: cleanUnicodefromText(token.text),
       fontSize,
       bold,
       margin,
@@ -24,7 +25,7 @@ export const pdfMakeHeading = (
   }
 
   return {
-    text: token.text,
+    text: cleanUnicodefromText(token.text),
     fontSize,
     bold,
     margin,
