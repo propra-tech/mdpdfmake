@@ -1,4 +1,6 @@
 import { Tokens } from "marked";
+import { globalOptions } from "../globalOptions";
+import { addToContent } from "./content-builder";
 import { imageURLToBase64 } from "./utils";
 
 export const pdfMakeImage = async (
@@ -21,9 +23,8 @@ export const pdfMakeImage = async (
       dataUrl = `data:image/gif;base64,` + base64Image;
     else dataUrl = `${base64Image}`;
 
-    if (push) content.push({ image: dataUrl, margin: [0, 5, 0, 5] });
-
-    return { image: dataUrl, margin: [0, 5, 0, 5] };
+    const imageContent = { image: dataUrl, margin: globalOptions.margins.default };
+    return addToContent(content, imageContent, push);
   } catch (err) {
     console.log(err);
     return {

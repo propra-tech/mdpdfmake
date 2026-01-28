@@ -1,6 +1,7 @@
 import { Tokens } from "marked";
-import { getStyle } from "./text";
 import { globalOptions } from "../globalOptions";
+import { addToContent } from "./content-builder";
+import { getStyle } from "./text";
 
 export const pdfMakeCodeblock = async (
   token: Tokens.Code | Tokens.Generic,
@@ -16,7 +17,7 @@ export const pdfMakeCodeblock = async (
         width: "90%",
         text: token.text,
         ...codeTextStyle,
-        margin: [5, 5, 5, 5], // Adjust margin as needed
+        margin: globalOptions.margins.code,
       },
     ],
   };
@@ -55,9 +56,5 @@ export const pdfMakeCodeblock = async (
     margin: globalOptions.codeblock.margin,
   };
 
-  if (push) {
-    content.push(codeblockStructure);
-  }
-
-  return codeblockStructure;
+  return addToContent(content, codeblockStructure, push);
 };

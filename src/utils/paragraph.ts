@@ -1,9 +1,10 @@
 import { Tokens } from "marked";
-import { pdfMakeText } from "./text";
-import { pdfMakeCodeblock } from "./codeblock";
 import { globalOptions } from "../globalOptions";
-import { pdfMakeImage } from "./image";
+import { pdfMakeCodeblock } from "./codeblock";
+import { addToContent } from "./content-builder";
 import { pdfMakeHTML } from "./html";
+import { pdfMakeImage } from "./image";
+import { pdfMakeText } from "./text";
 import { cleanUnicodefromText } from "./utils";
 
 export const pdfMakeParagraph = async (
@@ -25,7 +26,7 @@ export const pdfMakeParagraph = async (
           if (inlineElements.length > 0) {
             content.push({
               text: inlineElements,
-              margin: [0, 5, 0, 5],
+              margin: globalOptions.margins.default,
             });
             inlineElements = []; // Reset inline elements
           }
@@ -80,11 +81,9 @@ export const pdfMakeParagraph = async (
     // Push remaining inline elements after the last image (if any)
     if (inlineElements.length > 0) {
       content.push({
-        text: inlineElements.map((element) => ({
-          text: cleanUnicodefromText(element.text),
-        })),
+        text: inlineElements,
         fontSize: globalOptions.paragraph.fontSize,
-        margin: [0, 5, 0, 5],
+        margin: globalOptions.paragraph.margin,
       });
     }
 
@@ -98,7 +97,6 @@ export const pdfMakeParagraph = async (
       fontSize: globalOptions.paragraph.fontSize,
       margin: globalOptions.paragraph.margin,
     };
-    if (push) content.push(simpleParagraph);
-    return simpleParagraph;
+    return addToContent(content, simpleParagraph, push);
   }
 };

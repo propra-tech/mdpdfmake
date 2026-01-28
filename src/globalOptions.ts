@@ -55,6 +55,10 @@ export const globalOptions: MOptions = {
   codeblock: {
     margin: [0, 5, 0, 5],
   },
+  margins: {
+    default: [0, 5, 0, 5],
+    code: [5, 5, 5, 5],
+  },
   defaultStyle: {
     font: "Roboto",
   },

@@ -1,4 +1,5 @@
 import { globalOptions } from "../globalOptions";
+import { addToContent } from "./content-builder";
 
 export const pdfMakeHR = async (content: any[], push: boolean = true) => {
   const horizontalRule = {
@@ -16,9 +17,5 @@ export const pdfMakeHR = async (content: any[], push: boolean = true) => {
     margin: globalOptions.hr.margin,
   };
 
-  if (push) {
-    content.push(horizontalRule);
-  }
-
-  return horizontalRule;
+  return addToContent(content, horizontalRule, push);
 };

@@ -1,5 +1,6 @@
 import { Tokens } from "marked";
 import { globalOptions } from "../globalOptions";
+import { addToContent } from "./content-builder";
 import { mergetags } from "./mergetags";
 import { cleanUnicodefromText } from "./utils";
 
@@ -12,23 +13,16 @@ export const pdfMakeHeading = (
   const bold = globalOptions.headings[`h${token.depth}`].bold;
   const margin = globalOptions.headings[`h${token.depth}`].margin;
 
-  const styles = mergetags({}, token.text);
+  const mergetagsResult = mergetags({}, token.text) as { text: string };
+  const { text: cleanedText, ...styles } = mergetagsResult;
 
-  if (push) {
-    content.push({
-      text: cleanUnicodefromText(token.text),
-      fontSize,
-      bold,
-      margin,
-      ...styles,
-    });
-  }
-
-  return {
-    text: cleanUnicodefromText(token.text),
+  const heading = {
+    text: cleanUnicodefromText(cleanedText),
     fontSize,
     bold,
     margin,
     ...styles,
   };
+
+  return addToContent(content, heading, push);
 };

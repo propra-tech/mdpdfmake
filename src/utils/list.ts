@@ -1,6 +1,7 @@
 import { Tokens } from "marked";
-import { pdfMakeText } from "./text";
 import { globalOptions } from "../globalOptions";
+import { addToContent } from "./content-builder";
+import { pdfMakeText } from "./text";
 
 export const pdfMakeList = async (
   token: Tokens.List | Tokens.Generic,
@@ -39,9 +40,5 @@ export const pdfMakeList = async (
     fontSize: globalOptions.list.fontSize,
   };
 
-  if (push) {
-    content.push(listStructure);
-  }
-
-  return listStructure;
+  return addToContent(content, listStructure, push);
 };
