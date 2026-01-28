@@ -9,8 +9,12 @@ const styledTypes = ["strong", "em", "codespan", "del", "underline", "link"];
 
 function buildStyledFragment(token) {
   const styleResult = getStyle(token.type, token.text || token.raw);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { text: _ignoredText, ...style } = styleResult as { text?: string };
-  const fragment: { text: string; link?: string } & Record<string, unknown> = { text: cleanUnicodefromText(token.text), ...style };
+  const fragment: { text: string; link?: string } & Record<string, unknown> = {
+    text: cleanUnicodefromText(token.text),
+    ...style,
+  };
   if (token.type === "link") {
     fragment.link = token.href;
   }
@@ -20,7 +24,7 @@ function buildStyledFragment(token) {
 export const pdfMakeText = async (
   token: Tokens.Text | Tokens.Generic,
   content: any[],
-  push: boolean = true
+  push: boolean = true,
 ) => {
   if (token?.tokens && token?.tokens.length > 0) {
     const textFragments: any[] = [];

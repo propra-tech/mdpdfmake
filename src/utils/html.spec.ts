@@ -1,4 +1,4 @@
-import { describe, it, mock } from "node:test";
+import { describe, it } from "node:test";
 import assert from "node:assert";
 import { pdfMakeHTML } from "./html";
 import { assertValidPdfContent } from "../test-utils/pdfmake-validators";
@@ -103,21 +103,27 @@ describe("utils/html", () => {
 
     it("extracts width attribute from img tag", async () => {
       // This test verifies the regex pattern for width extraction
-      const widthMatch = '<img src="test.png" width="200">'.match(/width="([^"]*)"/);
+      const widthMatch = '<img src="test.png" width="200">'.match(
+        /width="([^"]*)"/,
+      );
       assert.ok(widthMatch);
       assert.strictEqual(widthMatch[1], "200");
     });
 
     it("extracts height attribute from img tag", async () => {
       // This test verifies the regex pattern for height extraction
-      const heightMatch = '<img src="test.png" height="150">'.match(/height="([^"]*)"/);
+      const heightMatch = '<img src="test.png" height="150">'.match(
+        /height="([^"]*)"/,
+      );
       assert.ok(heightMatch);
       assert.strictEqual(heightMatch[1], "150");
     });
 
     it("extracts src attribute from img tag", async () => {
       // This test verifies the regex pattern for src extraction
-      const srcMatch = '<img src="https://example.com/image.png">'.match(/src="([^"]*)"/);
+      const srcMatch = '<img src="https://example.com/image.png">'.match(
+        /src="([^"]*)"/,
+      );
       assert.ok(srcMatch);
       assert.strictEqual(srcMatch[1], "https://example.com/image.png");
     });
@@ -136,7 +142,7 @@ describe("utils/html", () => {
     });
 
     it("converts width string to number", async () => {
-      const width = ["width=\"200\"", "200"];
+      const width = ['width="200"', "200"];
       const numWidth = width?.[1] && Number(width[1]);
 
       assert.strictEqual(numWidth, 200);
