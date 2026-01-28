@@ -53,6 +53,10 @@ export interface MOptions {
   codeblock?: {
     margin?: number[];
   };
+  margins?: {
+    default?: number[];
+    code?: number[];
+  };
   defaultStyle?: {
     font: string;
   };

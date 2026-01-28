@@ -1,8 +1,9 @@
 import { Tokens } from "marked";
+import { globalOptions } from "../globalOptions";
+import { pdfMakeCodeblock } from "./codeblock";
+import { addToContent } from "./content-builder";
 import { pdfMakeParagraph } from "./paragraph";
 import { pdfMakeText } from "./text";
-import { pdfMakeCodeblock } from "./codeblock";
-import { globalOptions } from "../globalOptions";
 
 export const pdfMakeBlockquote = async (
   token: Tokens.Blockquote | Tokens.Generic,
@@ -62,9 +63,5 @@ export const pdfMakeBlockquote = async (
     text: blockquoteContent,
   };
 
-  if (push) {
-    content.push(blockquoteFormat);
-  }
-
-  return blockquoteFormat;
+  return addToContent(content, blockquoteFormat, push);
 };

@@ -1,6 +1,6 @@
 {
   "name": "@propra/mdpdfmake",
-  "version": "1.0.14",
+  "version": "1.1.0",
   "description": "A Node.js library to convert Markdown to PDFMake Syntax",
   "main": "dist/index.js",
   "types": "src/index.d.ts",
@@ -20,35 +20,32 @@
   "scripts": {
     "build": "tsc",
     "start": "node dist/index.js",
-    "dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts",
-    "lint": "eslint . --ext .ts",
-    "test": "cross-env TS_NODE_PROJECT=\"tsconfig.testing.json\" mocha -r ts-node/register src/**/*.spec.ts",
+    "dev": "nodemon --watch 'src/**/*.ts' --exec 'tsx' src/index.ts",
+    "lint": "eslint .",
+    "test": "node --import tsx --test 'src/**/*.spec.ts'",
     "prepublishOnly": "npm run lint && npm run build"
   },
   "devDependencies": {
-    "@types/chai": "^4.2.22",
-    "@types/mocha": "^9.0.0",
-    "@types/node": "^20.0.0",
-    "@types/pdfmake": "^0.2.8",
-    "@typescript-eslint/eslint-plugin": "^6.12.0",
-    "@typescript-eslint/parser": "^6.12.0",
-    "chai": "^4.3.4",
-    "eslint": "^8.51.0",
-    "mocha": "^9.1.1",
-    "nodemon": "^3.0.1",
-    "ts-node": "^10.9.1",
-    "typescript": "^5.2.2"
+    "@eslint/js": "^9.39.2",
+    "@types/node": "^25.0.10",
+    "@types/pdfmake": "^0.2.13",
+    "@typescript-eslint/eslint-plugin": "^8.54.0",
+    "@typescript-eslint/parser": "^8.54.0",
+    "eslint": "^9.39.2",
+    "nodemon": "^3.1.11",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.54.0"
   },
   "dependencies": {
-    "@types/marked": "^6.0.0",
-    "cross-env": "^7.0.3",
-    "html-entities": "^2.5.2",
-    "https": "^1.0.0",
-    "marked": "^12.0.0",
-    "pdfmake": "^0.2.9"
+    "html-entities": "^2.6.0",
+    "marked": "^17.0.1"
+  },
+  "peerDependencies": {
+    "pdfmake": ">=0.2.0"
   },
   "homepage": "https://github.com/propra-tech/mdpdfmake#readme",
   "engines": {
-    "node": ">=12.0.0"
+    "node": ">=18.0.0"
   }
 }

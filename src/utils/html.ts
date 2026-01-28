@@ -1,4 +1,6 @@
 import { Tokens } from "marked";
+import { globalOptions } from "../globalOptions";
+import { addToContent } from "./content-builder";
 import { imageURLToBase64 } from "./utils";
 
 export const pdfMakeHTML = async (
@@ -23,7 +25,7 @@ export const pdfMakeHTML = async (
               image: `${base64Image}`,
               width: width?.[1] && Number(width[1]),
               height: height?.[1] && Number(height[1]),
-              margin: [0, 5, 0, 5],
+              margin: globalOptions.margins.default,
             };
           }
           break;
@@ -34,9 +36,5 @@ export const pdfMakeHTML = async (
     }
   }
 
-  if (push) {
-    content.push(transformedContent);
-  }
-
-  return transformedContent;
+  return addToContent(content, transformedContent, push);
 };
