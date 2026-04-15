@@ -55,6 +55,43 @@ describe("utils/text", () => {
     ]);
   });
 
+  it("should not auto-link email addresses", async () => {
+    const text = {
+      type: "link",
+      raw: "test@example.com",
+      text: "test@example.com",
+      href: "mailto:test@example.com",
+    };
+    const content = [];
+    await pdfMakeText(text, content);
+
+    assertValidPdfContent(content[0]);
+
+    assert.deepStrictEqual(content, [{ text: "test@example.com" }]);
+  });
+
+  it("should keep intentional email links", async () => {
+    const text = {
+      type: "link",
+      raw: "[test@example.com](mailto:test@example.com)",
+      text: "test@example.com",
+      href: "mailto:test@example.com",
+    };
+    const content = [];
+    await pdfMakeText(text, content);
+
+    assertValidPdfContent(content[0]);
+
+    assert.deepStrictEqual(content, [
+      {
+        text: "test@example.com",
+        link: "mailto:test@example.com",
+        color: "blue",
+        decoration: "underline",
+      },
+    ]);
+  });
+
   it("convert strikethrough text", async () => {
     const text = {
       type: "del",

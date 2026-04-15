@@ -8,6 +8,12 @@ import { cleanUnicodefromText } from "./utils";
 const styledTypes = ["strong", "em", "codespan", "del", "underline", "link"];
 
 function buildStyledFragment(token) {
+  // Skip auto-linked emails — render as plain text
+  // Autolinks have raw without markdown link syntax (no "[")
+  if (token.type === "link" && token.href?.startsWith("mailto:") && !token.raw?.startsWith("[")) {
+    return { text: cleanUnicodefromText(token.text) };
+  }
+
   const styleResult = getStyle(token.type, token.text || token.raw);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { text: _ignoredText, ...style } = styleResult as { text?: string };
